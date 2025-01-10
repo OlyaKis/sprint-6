@@ -22,6 +22,7 @@ class BasePageLocators:
     ANSWER_DELIVERY = (By.XPATH, "//div[@id='accordion__panel-7']")  # Ответ про доставку за МКАД
 
 
+
 class OrderPageLocators:
 
     COOKIE_BUTTON = (By.XPATH, "//*[@id='rcc-confirm-button']")  # Кнопка согласия с куками
@@ -45,3 +46,4 @@ class OrderPageLocators:
     ORDER_BUTTON = (By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM']")  # Кнопка "Заказать"
     CONFIRM_BUTTON = (By.XPATH, "//button[contains(text(),'Да')]")  # Кнопка для подтверждения заказа
     SUCCESS_MESSAGE = (By.XPATH, "//div[contains(text(), 'Заказ оформлен')]")  # Сообщение об успешном заказе
+    FREE_SPACE = (By.CSS_SELECTOR, "body")  # Для клика в пустое место

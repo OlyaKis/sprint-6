@@ -2,6 +2,7 @@ import allure
 import pytest
 from pages.order_page import OrderPage
 
+
 @allure.story('test orders scooters')
 class TestOrderScooters:
     @allure.feature('test top order button')
@@ -55,6 +56,7 @@ class TestOrderScooters:
         success_message = page.get_success_message()
         assert "Заказ оформлен" in success_message
 
+
 @allure.story('test buttons logo')
 class TestButtonsLogo:
     @allure.feature('test samokat logo')
@@ -63,7 +65,7 @@ class TestButtonsLogo:
         page.open_page()
         page.order_button_top()
         page.click_logo_samokat()
-        assert driver.current_url == "https://qa-scooter.praktikum-services.ru/"
+        page.assert_current_url()
 
     @allure.feature('test yandex logo')
     def test_yandex_logo(self, driver):
