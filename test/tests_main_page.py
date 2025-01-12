@@ -1,4 +1,4 @@
-from pages.base_page import BasePage
+from pages.main_page import MainPage
 from locators import BasePageLocators
 import allure
 import pytest
@@ -7,7 +7,7 @@ import pytest
 @allure.story('test faq')
 class TestQuestionAndAnswers:
     @allure.feature('test FAQ questions and answers')
-    @pytest.mark.parametrize("question_selector, answer_selector, expected_answer", [
+    @pytest.mark.parametrize("question_locator, answer_locator, expected_answer", [
         (BasePageLocators.QUESTION_PRICE, BasePageLocators.ANSWER_PRICE, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."),
         (BasePageLocators.QUESTION_SEVERAL_SCOOTERS, BasePageLocators.ANSWER_SEVERAL_SCOOTERS,
          "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."),
@@ -23,10 +23,10 @@ class TestQuestionAndAnswers:
         (BasePageLocators.QUESTION_DELIVERY, BasePageLocators.ANSWER_DELIVERY,
          "Да, обязательно. Всем самокатов! И Москве, и Московской области."),
     ])
-    def test_question_and_answer(self, driver, question_selector, answer_selector, expected_answer):
-        page = BasePage(driver)
-        page.open_page()
-        page.accept_cookies()
-        page.click_element(question_selector)
-        actual_answer = page.get_element_text(answer_selector)
+    def test_question_and_answer(self, driver, question_locator, answer_locator, expected_answer):
+        page = MainPage(driver)
+        page.open_main_page()
+        page.click_cookie_button()
+        page.click_question(question_locator)
+        actual_answer = page.get_answer_text(answer_locator)
         assert actual_answer == expected_answer

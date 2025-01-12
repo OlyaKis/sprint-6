@@ -1,6 +1,7 @@
 import allure
 import pytest
 from pages.order_page import OrderPage
+from constants import Constants
 
 
 @allure.story('test orders scooters')
@@ -38,7 +39,7 @@ class TestOrderScooters:
          "серая безысходность",
          "Не звонить, оставить у двери"),
     ])
-    def test_order_scooter_bottom_button(self, driver, name, surname, address, metro_station, phone, date, rental_period,color, comment):
+    def test_order_scooter_bottom_button(self, driver, name, surname, address, metro_station, phone, date, rental_period, color, comment):
         page = OrderPage(driver)
         page.open_page()
         page.order_button_bottom()
@@ -65,7 +66,8 @@ class TestButtonsLogo:
         page.open_page()
         page.order_button_top()
         page.click_logo_samokat()
-        page.assert_current_url()
+        expected_url = Constants.BASE_URL
+        page.assert_current_url(expected_url)
 
     @allure.feature('test yandex logo')
     def test_yandex_logo(self, driver):
@@ -73,6 +75,6 @@ class TestButtonsLogo:
         page.open_page()
         page.order_button_top()
         page.click_yandex_logo()
-        page.switch_to_new_window()
+        page.switch_to_window()
         expected_url = "https://dzen.ru/"
         page.verify_url_contains(expected_url)

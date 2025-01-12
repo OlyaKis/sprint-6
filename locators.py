@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
-
     COOKIE_BUTTON = (By.XPATH, "//*[@id='rcc-confirm-button']")  # Кнопка согласия с куками
     QUESTION_PRICE = (By.XPATH, "//*[@id='accordion__heading-0']")  # Вопрос про цену и способы оплаты
     QUESTION_SEVERAL_SCOOTERS = (By.XPATH, "//div[@id='accordion__heading-1']")  # Вопрос про возможность заказать несколько самокатов
@@ -22,9 +21,7 @@ class BasePageLocators:
     ANSWER_DELIVERY = (By.XPATH, "//div[@id='accordion__panel-7']")  # Ответ про доставку за МКАД
 
 
-
 class OrderPageLocators:
-
     COOKIE_BUTTON = (By.XPATH, "//*[@id='rcc-confirm-button']")  # Кнопка согласия с куками
     YANDEX_LOGO = (By.XPATH, "//img[@alt='Yandex']")  # Яндекс логотип
     SAMOKAT_LOGO = (By.XPATH, "//img[@alt='Scooter']")  # Самокат логотип
